@@ -1,8 +1,8 @@
-import { BiHash, BiHomeCircle, BiUser } from "react-icons/bi";
+import { BiHash, BiHomeCircle, BiMoney, BiUser } from "react-icons/bi";
 import { BsBell, BsBookmark, BsEnvelope, BsTwitter } from "react-icons/bs";
-import { Inter } from "next/font/google";
 
-const inter = Inter({ subsets: ["latin"] });
+import FeedCard from "@/components/FeedCard";
+import { SlOptions } from "react-icons/sl";
 
 interface TwitterSideBarButton {
     title: string;
@@ -31,39 +31,60 @@ const sideBarMenuItems: TwitterSideBarButton[] = [
         icon: <BsBookmark />,
     },
     {
+        title: "Twitter Blue",
+        icon: <BiMoney />,
+    },
+    {
         title: "Profile",
         icon: <BiUser />,
+    },
+    {
+        title: "More Options",
+        icon: <SlOptions />,
     },
 ];
 
 export default function Home() {
     return (
-        <div className={inter.className}>
+        <div>
             <div className="grid grid-cols-12 h-screen w-screen px-56">
-                <div className="col-span-3 pt-8">
-                    <div className="text-4xl h-fit w-fit hover:bg-gray-600 rounded-full p-4 cursor-pointer transition-all">
+                <div className="col-span-3 pt-8 ml-28">
+                    <div className="text-2xl h-fit w-fit hover:bg-gray-600 rounded-full p-4 cursor-pointer transition-all">
                         <BsTwitter />
                     </div>
-                    <div className="mt-4 text-2xl font-semibold pr-4">
+                    <div className="mt-1 text-xl pr-4">
                         <ul>
                             {sideBarMenuItems.map((item) => (
                                 <li
-                                    className="flex justify-start items-center gap-4 hover:bg-gray-800 rounded-2xl px-5 py-2 w-fit cursor-pointer mt-2"
+                                    className="flex justify-start items-center gap-4 hover:bg-gray-800 rounded-2xl px-3 py-2 w-fit cursor-pointer mt-2"
                                     key={item.title}
                                 >
-                                    <span>{item.icon}</span>
+                                    <span className="text-3xl">
+                                        {item.icon}
+                                    </span>
                                     <span>{item.title}</span>
                                 </li>
                             ))}
                         </ul>
                         <div className="mt-5 px-10">
-                            <button className="bg-[#1d9bf0] p-4 rounded-full w-full text-lg">
+                            <button className="bg-[#1d9bf0] font-semibold py-2 px-4 rounded-full w-full text-lg">
                                 Tweet
                             </button>
                         </div>
                     </div>
                 </div>
-                <div className="col-span-6 border-r-[1px] border-l-2 border-white"></div>
+                <div className="col-span-5 border-r-[1px] border-l-[1px] h-screen border-gray-600 overflow-scroll">
+                    <FeedCard />
+                    <FeedCard />
+                    <FeedCard />
+                    <FeedCard />
+                    <FeedCard />
+                    <FeedCard />
+                    <FeedCard />
+                    <FeedCard />
+                    <FeedCard />
+                    <FeedCard />
+                </div>
                 <div className="col-span-3"></div>
             </div>
         </div>
