@@ -37,3 +37,10 @@ next-env.d.ts
 
 #lock file
 package-lock.json
+
+#prisma migration
+
+/prisma/migrations
+
+#enviorment
+.env
